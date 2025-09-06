@@ -21,7 +21,9 @@ Además, se incorporarán variables relacionadas con los **plazos y costos de pa
 
 Esto permitirá **comparar rutas, cargas y brokers no solo por ingresos brutos**, sino también por **efectivo neto recibido en función del tiempo de pago**.
 
-La intención es analizar **cuál tipo de unidad ofrece mayor rentabilidad**, considerando variables como carga útil, tipo de carga, millaje, pago promedio por ruta, tiempo de entrega y zona de operación.
+La intención no es determinar una única unidad más rentable, **sino identificar bajo qué condiciones operativas cada tipo de unidad (Cargo Van, Sprinter, Box Truck, Semi sin dry van)** alcanza su **máximo potencial de rentabilidad.**
+
+Aunque todas pueden ser rentables, el objetivo es descubrir **cómo, cuándo y dónde lo son,** considerando variables como **carga útil, tipo de carga, millaje, tarifa promedio por ruta, tiempo de entrega, zona de operación y modalidad de pago.**
 
 ---
 
@@ -92,6 +94,14 @@ Estas modalidades serán evaluadas en combinación con el ingreso bruto por carg
 - [ ] Análisis exploratorio (EDA)  
 - [ ] Visualizaciones  
 - [ ] Documentación final
+
+---
+
+## 🤝 Impacto en la comunidad
+
+Este proyecto está inspirado y dirigido especialmente a la comunidad de transportistas independientes de EE.UU., con quienes comparto experiencias a través de un grupo en Facebook. Una vez finalizado, los hallazgos serán compartidos con el grupo para validar resultados, recibir retroalimentación y contribuir al crecimiento colectivo del gremio.
+
+Este POC busca ser una herramienta útil, realista y escalable para mejorar la toma de decisiones diarias de los owner-operators.
 
 ---
 
