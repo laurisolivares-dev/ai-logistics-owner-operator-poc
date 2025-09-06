@@ -27,7 +27,7 @@ Aunque todas pueden ser rentables, el objetivo es descubrir **cómo, cuándo y d
 
 ---
 
-## 🎯 Objetivos del proyecto
+## 🛠️ Metas del proyecto (POC Data Engineering)
 
 1. 📦 **Validación de brokers/dispatchers confiables**
 2. 📊 **Comparación de rentabilidad según tipo de unidad**
