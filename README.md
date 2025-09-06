@@ -13,9 +13,9 @@
 
 The main goal is to support **owner-operators** in:
 
-- ✅ Validating brokers and dispatchers  
-- 💲 Optimizing costs  
-- 🛣️ Increasing route efficiency
+- ✅ Validating brokers and dispatchers.  
+- 💲 Optimizing costs.  
+- 🛣️ Increasing route efficiency.
 
 This analysis focuses on vehicle types such as **Cargo Van, Sprinter Van, Box Truck, and Semi Truck (without dry van)**, with payload capacities ranging from **3,600 lb to 26,000 lb**.
 
@@ -35,11 +35,11 @@ Although all unit types can be profitable, we seek to understand **how, when, an
 
 ## 🛠️ Project Goals (POC Data Engineering)
 
-1. 🔍 Validate trustworthy brokers and dispatchers  
-2. 📊 Compare profitability by unit type  
-3. 💸 Evaluate the impact of payment terms on net revenue  
-4. 🛣️ Optimize routes, mileage, and delivery zones  
-5. 🤖 Explore AI use for predictive logistics analysis
+1. 🔍 Validate trustworthy brokers and dispatchers.  
+2. 📊 Compare profitability by unit type.  
+3. 💸 Evaluate the impact of payment terms on net revenue.  
+4. 🛣️ Optimize routes, mileage, and delivery zones.  
+5. 🤖 Explore AI use for predictive logistics analysis.
 
 ---
 
@@ -59,34 +59,34 @@ These terms will be used to calculate **real net revenue** per load.
 
 ## 📊 Key Analytical Variables
 
-- Vehicle type (van, box truck, etc.)  
-- Load weight and dimensions  
-- Broker/dispatcher offering the load  
-- Operating region or state  
-- Route distance (miles)  
-- Rate per mile (USD/mile)  
-- Payment term and method  
-- Estimated delivery time  
-- Estimated operational cost (fuel, maintenance, etc.)
+- Vehicle type (van, box truck, etc.).  
+- Load weight and dimensions.  
+- Broker/dispatcher offering the load.  
+- Operating region or state.  
+- Route distance (miles).  
+- Rate per mile (USD/mile).  
+- Payment term and method.  
+- Estimated delivery time.  
+- Estimated operational cost (fuel, maintenance, etc.).
 
 ---
 
 ## 🗂️ Data Sources (Planned)
 
-- Web scraping from broker/freight platforms (e.g., DAT, TruckSmarter)  
-- Anonymized real-world load documents  
-- Public logistics APIs  
-- Structured datasets in Google BigQuery
+- Web scraping from broker/freight platforms (e.g., DAT, TruckSmarter).  
+- Anonymized real-world load documents.  
+- Public logistics APIs.  
+- Structured datasets in Google BigQuery.
 
 ---
 
 ## 📈 Expected Outcomes
 
-- Net profitability comparison by vehicle type and payment method  
-- Actionable recommendations for independent carriers  
-- Interactive dashboard (Looker Studio or Python) by state, unit, and broker  
-- Fully documented and reproducible ETL pipeline  
-- Potential future scaling to dry vans and LTL/FTL freight
+- Net profitability comparison by vehicle type and payment method.  
+- Actionable recommendations for independent carriers.  
+- Interactive dashboard (Looker Studio or Python) by state, unit, and broker.  
+- Fully documented and reproducible ETL pipeline.  
+- Potential future scaling to dry vans and LTL/FTL freight.
 
 ---
 
