@@ -103,11 +103,11 @@ Extraer bloques bien definidos de datos regulatorios y operativos para transport
   - Historial de accidentes.
   - Calificación de seguridad.
   - Técnicas utilizadas:
-     -- requests para cargar HTML desde la web pública de FMCSA.
-      -- BeautifulSoup para el parseo estructurado.
-      -- Extracción selectiva por segmentos HTML con múltiples tables anidadas.
-      -- Consolidación final de los datos por bloques temáticos en un diccionario.
-      -- Exportación en formato .json para posteriores flujos ETL.
+    - requests para cargar HTML desde la web pública de FMCSA.
+    - BeautifulSoup para el parseo estructurado.
+    - Extracción selectiva por segmentos HTML con múltiples tables anidadas.
+    - Consolidación final de los datos por bloques temáticos en un diccionario.
+    - Exportación en formato .json para posteriores flujos ETL.
 
 Esta segmentación estructurada permitirá modularizar las próximas etapas del scraper, conectar con bases de datos (como BigQuery) y escalar el scraping a múltiples MC Numbers automáticamente.
 
