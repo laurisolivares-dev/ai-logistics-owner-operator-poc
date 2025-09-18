@@ -73,6 +73,66 @@ Estas modalidades serán evaluadas en combinación con el ingreso bruto por carg
 - Bases de datos estructuradas en Google BigQuery
 
 ---
+🧱 Etapas del Web Scraper
+✅ Etapa 1: Extracción Estructurada por Bloques
+
+En esta etapa inicial, se diseñó un scraper orientado a la extracción temática y ordenada de información crítica del sitio web SAFER FMCSA
+, utilizando exclusivamente el número MC como clave de búsqueda.
+
+Objetivo:
+Extraer bloques bien definidos de datos regulatorios y operativos para transportistas registrados en el sistema del Departamento de Transporte de EE.UU. (USDOT).
+
+Bloques extraídos:
+
+🆔 Identificación de la entidad
+
+Legal Name, DBA Name, USDOT Number, MC Number
+
+Physical Address, Mailing Address, Phone
+
+🏢 Estado del registro:
+
+Carrier/Broker Status, Entity Type
+
+📊 Clasificación de operación:
+
+Operation Classification, Carrier Operation
+
+🧯 Seguridad y cumplimiento:
+
+Inspecciones, % fuera de servicio
+
+Historial de accidentes
+
+Calificación de seguridad
+
+Técnicas utilizadas:
+
+requests para cargar HTML desde la web pública de FMCSA
+
+BeautifulSoup para el parseo estructurado
+
+Extracción selectiva por segmentos HTML con múltiples tables anidadas
+
+Consolidación final de los datos por bloques temáticos en un diccionario
+
+Exportación en formato .json para posteriores flujos ETL
+
+Esta segmentación estructurada permitirá modularizar las próximas etapas del scraper, conectar con bases de datos (como BigQuery) y escalar el scraping a múltiples MC Numbers automáticamente.
+
+🔜 Etapa 2 (en desarrollo): Scraper Multi-MC con Automatización y Control de Errores
+
+Próximamente se diseñará una segunda etapa para:
+
+Recorrer múltiples MC Numbers (desde archivo, rango o scraping previo)
+
+Implementar control de errores ante MC inválidos, páginas vacías o estructuras inconsistentes
+
+Agregar funciones de logging, retry y tiempo de espera dinámico
+
+Guardar los datos en un Data Lake (como GCP Cloud Storage o BigQuery
+
+---
 
 ## 📌 Resultados esperados
 
