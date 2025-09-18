@@ -103,7 +103,7 @@ Extraer bloques bien definidos de datos regulatorios y operativos para transport
   - Historial de accidentes.
   - Calificación de seguridad.
   - Técnicas utilizadas:
-      -- requests para cargar HTML desde la web pública de FMCSA.
+     -- requests para cargar HTML desde la web pública de FMCSA.
       -- BeautifulSoup para el parseo estructurado.
       -- Extracción selectiva por segmentos HTML con múltiples tables anidadas.
       -- Consolidación final de los datos por bloques temáticos en un diccionario.
