@@ -91,37 +91,37 @@ Retrieve key compliance, operational, and safety data for registered carriers/br
 📦 **Extracted Blocks:**
 
 - 🆔 **Entity Identification:**  
-  - Legal Name, DBA Name  
-  - USDOT Number, MC Number  
-  - Physical Address, Mailing Address, Phone
+  - Legal Name, DBA Name.  
+  - USDOT Number, MC Number.  
+  - Physical Address, Mailing Address, Phone.
 
 - 🏢 **Registration Information:**  
-  - Entity Type  
-  - USDOT Status  
-  - Operating Authority Status
+  - Entity Type.  
+  - USDOT Status.  
+  - Operating Authority Status.
 
 - ⚙️ **Operational Classification:**  
-  - Operation Classification  
-  - Carrier Operation
+  - Operation Classification.  
+  - Carrier Operation.
 
 - 📊 **Compliance & Inspections:**  
-  - Inspection counts (Vehicle, Driver, Hazmat, IEP)  
-  - Out-of-Service % (OOS)  
-  - Comparison with national average
+  - Inspection counts (Vehicle, Driver, Hazmat, IEP).  
+  - Out-of-Service % (OOS).  
+  - Comparison with national average.
 
 - 🚧 **Crash History:**  
-  - Number of incidents (Fatal, Injury, Tow, Total)
+  - Number of incidents (Fatal, Injury, Tow, Total).
 
 - 📋 **Carrier Safety Rating:**  
-  - Rating Date, Review Date, Rating, Type
+  - Rating Date, Review Date, Rating, Type.
 
 🛠 **Techniques Used:**
 
-- `requests` to fetch public HTML content  
-- `BeautifulSoup` to parse the DOM structure  
-- Robust table parsing via `<td>` and class targeting  
-- Clean data aggregation into structured dictionary blocks  
-- JSON export for future use in Data Lakes or ETL pipelines
+- `Requests` to fetch public HTML content. 
+- `BeautifulSoup` to parse the DOM structure.  
+- Robust table parsing via `<td>` and class targeting.  
+- Clean data aggregation into structured dictionary blocks.  
+- JSON export for future use in Data Lakes or ETL pipelines.
 
 ✅ This structure enables easy extension of the scraper in future stages, including multi-MC automation, error handling, bulk scraping, and cloud-based storage in BigQuery or Cloud Storage.
 
