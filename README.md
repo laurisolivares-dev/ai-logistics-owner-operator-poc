@@ -79,6 +79,62 @@ These terms will be used to calculate **real net revenue** per load.
 - Structured datasets in Google BigQuery.
 
 ---
+## 🧱 Web Scraper Phases
+
+### ✅ Phase 1: Structured Block-Based Extraction
+
+In this first phase, we developed a **modular thematic scraper** focused on the **structured extraction of critical data blocks** from the public SAFER FMCSA page, using the **MC Number** as the primary identifier.
+
+🔍 **Main Goal:**  
+Retrieve key compliance, operational, and safety data for registered carriers/brokers in the U.S. Department of Transportation (USDOT) system, organized by logical sections.
+
+📦 **Extracted Blocks:**
+
+- 🆔 **Entity Identification:**  
+  - Legal Name, DBA Name  
+  - USDOT Number, MC Number  
+  - Physical Address, Mailing Address, Phone
+
+- 🏢 **Registration Information:**  
+  - Entity Type  
+  - USDOT Status  
+  - Operating Authority Status
+
+- ⚙️ **Operational Classification:**  
+  - Operation Classification  
+  - Carrier Operation
+
+- 📊 **Compliance & Inspections:**  
+  - Inspection counts (Vehicle, Driver, Hazmat, IEP)  
+  - Out-of-Service % (OOS)  
+  - Comparison with national average
+
+- 🚧 **Crash History:**  
+  - Number of incidents (Fatal, Injury, Tow, Total)
+
+- 📋 **Carrier Safety Rating:**  
+  - Rating Date, Review Date, Rating, Type
+
+🛠 **Techniques Used:**
+
+- `requests` to fetch public HTML content  
+- `BeautifulSoup` to parse the DOM structure  
+- Robust table parsing via `<td>` and class targeting  
+- Clean data aggregation into structured dictionary blocks  
+- JSON export for future use in Data Lakes or ETL pipelines
+
+✅ This structure enables easy extension of the scraper in future stages, including multi-MC automation, error handling, bulk scraping, and cloud-based storage in BigQuery or Cloud Storage.
+
+---
+
+### 🔜 Phase 2 (in progress): Multi-MC Automation
+
+- Loop through multiple MC Numbers from a list or file  
+- Error handling for empty, invalid, or inconsistent entries  
+- Logging, retry logic, and dynamic sleeping  
+- Upload of parsed data to GCP or cloud-based warehouses
+
+---
 
 ## 📈 Expected Outcomes
 
