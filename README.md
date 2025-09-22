@@ -127,12 +127,102 @@ Retrieve key compliance, operational, and safety data for registered carriers/br
 
 ---
 
-### 🔜 Phase 2 (in progress): Multi-MC Automation
+## 🧩 Stage 2: JSON Storage for Extracted MC Data
 
-- Loop through multiple MC Numbers from a list or file  
-- Error handling for empty, invalid, or inconsistent entries  
-- Logging, retry logic, and dynamic sleeping  
-- Upload of parsed data to GCP or cloud-based warehouses
+In this stage, we implemented the logic to **store all extracted blocks from the FMCSA SAFER website into structured JSON files**, organized by each MC number.
+
+### 🔸 Purpose:
+Enable persistent storage of all extracted data (USDOT info, Company Info, Inspections, Crashes, etc.) per MC number, to support future querying, analysis, and integration into cloud ETL pipelines.
+
+### 🛠️ Implementation Details:
+
+- A Python dictionary is dynamically built during the parsing phase.
+- Each section is stored as a key-value block (e.g., `"USDOT Information"`, `"Crash History"`, `"Carrier Safety Rating"`).
+- The data is saved in `.json` format using Python's built-in `json.dump()` function.
+
+### 📁 JSON Output Sample:
+File saved as:
+```bash
+outputs/MC_1498383.json
+
+{
+  "USDOT Information": {
+    "Entity Type": "CARRIER",
+    "USDOT Status": "ACTIVE",
+    "USDOT Number": "3992838",
+    "MCS-150 Form Date": "01/19/2025",
+    "Out of Service Date": "None",
+    "State Carrier ID Number": "N/A",
+    "MCS-150 Mileage (Year)": "N/A"
+  },
+  "Operating Authority Status": "AUTHORIZED FOR Property For Licensing and Insurance details click here.",
+  "Company Information": {
+    "Legal Name": "MYDELIVERYS919 LLC",
+    "DBA Name": "",
+    "Physical Address": "8226 ROLLINGHITCH CT MAINEVILLE, OH 45039",
+    "Mailing Address": "8226 ROLLINGHITCH CT MAINEVILLE, OH 45039",
+    "Phone": "(513) 828-7166",
+    "DUNS Number": "--",
+    "Power Units": "0",
+    "Non-CMV Units": "1",
+    "Drivers": "1"
+  },
+  "Operation Classification": [
+    "Auth. For Hire",
+    "Interstate",
+    "General Freight",
+    "Metal: sheets, coils, rolls",
+    "Building Materials",
+    "Utilities"
+  ],
+  "Carrier Operation": "Interstate",
+  "Inspections Summary": {
+    "Inspections": {
+      "Vehicle": "0",
+      "Driver": "0",
+      "Hazmat": "0",
+      "IEP": "0"
+    },
+    "Out of Service": {
+      "Vehicle": "0",
+      "Driver": "0",
+      "Hazmat": "0",
+      "IEP": "0"
+    },
+    "Out of Service %": {
+      "Vehicle": "0%",
+      "Driver": "0%",
+      "Hazmat": "0%",
+      "IEP": "0%"
+    },
+    "Natl Avg %": {
+      "Vehicle": "22.26%",
+      "Driver": "6.67%",
+      "Hazmat": "4.44%",
+      "IEP": "N/A"
+    }
+  },
+  "Crash History": {
+    "Fatal": "0",
+    "Injury": "0",
+    "Tow": "0",
+    "Total": "0"
+  },
+  "Carrier Safety Rating": {
+    "Rating Date": "None",
+    "Review Date": "None",
+    "Rating": "None",
+    "Type": "None"
+  }
+}
+```
+
+**📁 Location of generated JSON files:**
+All files are stored in the `outputs/` folder in your local environment, for example:
+`C:\outputs\MC_1498383.json`
+
+**💡 Benefit:**
+This structure allows for subsequent queries, integration with ETL pipelines, comparative analysis between MCs, or visualization in external dashboards.
 
 ---
 
