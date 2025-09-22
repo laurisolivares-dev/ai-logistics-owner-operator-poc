@@ -262,7 +262,7 @@ Unlike Stage 1, this phase did not present major technical difficulties. Thanks 
 - Exported using `json.dump()` with `indent=4` for enhanced readability and validation.
 - Files are automatically saved to the `/outputs/` directory, for example:
 
-```json
+```json```
 📁 outputs/MC_1498383.json
 
 ---
