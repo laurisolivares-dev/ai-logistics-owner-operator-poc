@@ -225,7 +225,51 @@ All files are stored in the `outputs/` folder in your local environment, for exa
 This structure allows for subsequent queries, integration with ETL pipelines, comparative analysis between MCs, or visualization in external dashboards.
 
 ---
+### 🔍 Technical Challenges and Solutions Applied
 
+During this first stage of development, we encountered and overcame several key challenges in building a robust and accurate scraper:
+
+#### 🧱 1. DOM-based Navigation and Inconsistent Structure
+- **Challenge**: The HTML structure of the FMCSA (SAFER) portal varies subtly between different MC profiles.
+- **Solution**: We designed modular block-based extractors (USDOT Info, Company Info, Classification, Inspections, etc.) using `BeautifulSoup` and a `<th>`-based regex approach. This allowed data extraction even when labels and values were not consistently aligned.
+
+#### ⏱️ 2. Timing and Page Load Delays
+- **Challenge**: The page does not load instantly; some tables take a few seconds to fully render.
+- **Solution**: We implemented `WebDriverWait` with explicit conditions (`EC.presence_of_element_located`) to ensure the DOM was fully loaded before parsing with BeautifulSoup.
+
+#### ⚠️ 3. Navigation Errors or Missing Data
+- **Challenge**: Some MC numbers return incomplete data or fail to load entirely.
+- **Solution**: We added `try/except` blocks and content validation with `if not soup.find(...)`, allowing graceful error handling without crashing the scraper.
+
+#### 🧩 4. Modularity and Helper Functions
+- **Challenge**: Repetition of patterns in similar data extraction tasks.
+- **Solution**: We created helper functions (`get_value_by_label`, `get_address_block`, `extract_table_data`, etc.) to reduce code duplication and improve clarity. This supports a scalable block-based architecture.
+
+#### 🔒 5. Session Closing and Resource Cleanup
+- **Challenge**: WebDriver may leave background processes open if not properly handled.
+- **Solution**: We added a clean shutdown with `driver.quit()` and used a `try/finally` block to prevent memory leaks or orphaned browser instances.
+
+---
+### 📦 Technical Summary of Stage 2
+
+Unlike Stage 1, this phase did not present major technical difficulties. Thanks to the modular block-based architecture created earlier (`extract_usdot_information`, `extract_company_information`, `extract_classifications`, etc.), we successfully aggregated all data into a unified dictionary and exported it to a `.json` file.
+
+#### ✅ Accomplishments:
+
+- Structured data collection by thematic blocks (USDOT Info, Company Info, Classifications, Inspections, Crash, Rating).
+- Assembled a single structured dictionary (`carrier_data`) with descriptive keys.
+- Included the MC number as a unique identifier in the file name.
+- Exported using `json.dump()` with `indent=4` for enhanced readability and validation.
+- Files are automatically saved to the `/outputs/` directory, for example:
+
+```json
+📁 outputs/MC_1498383.json
+
+---
+
+✨ Thanks to these solutions, we built a **solid, modular, and resilient Stage 1**, capable of adapting to a wide variety of FMCSA profile structures.
+
+---
 ## 📈 Expected Outcomes
 
 - Net profitability comparison by vehicle type and payment method.  
