@@ -208,7 +208,7 @@ El diseño modular por bloques permite estructurar la información en categoría
 
 **📁 Ubicación de los archivos JSON generados:**  
 Todos los archivos se almacenan en la carpeta `outputs/` del entorno local, por ejemplo:  
-`C:\Users\loliv\outputs\MC_1498383.json`
+`C:\outputs\MC_1498383.json`
 
 **💡 Beneficio:**  
 Esta estructura permite consultas posteriores, integración con pipelines ETL, análisis comparativo entre MCs, o visualización en dashboards externos.
