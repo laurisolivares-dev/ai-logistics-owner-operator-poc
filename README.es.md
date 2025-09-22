@@ -246,6 +246,35 @@ A continuación se describen las acciones pendientes para completar el flujo ETL
 - [ ] Cargar los datos en BigQuery desde GCS
 
 ---
+### 🔍 Retos técnicos y soluciones aplicadas
+
+Durante esta primera etapa de desarrollo, enfrentamos y superamos varios desafíos clave en la construcción de un scraper robusto y preciso:
+
+#### 🧱 1. Navegación basada en DOM y estructura inconsistente
+- **Reto**: La estructura HTML del portal de la FMCSA (SAFER) varía sutilmente entre diferentes perfiles MC.
+- **Solución**: Diseñamos extractores modulares por bloque (USDOT Info, Company Info, Classification, Inspections, etc.) utilizando `BeautifulSoup` y un enfoque centrado en etiquetas `<th>` con expresiones regulares. Esto permitió extraer datos aún cuando los valores no están directamente alineados con los `label`.
+
+#### ⏱️ 2. Sincronización y tiempos de espera
+- **Reto**: La carga de la página no es inmediata; algunas tablas pueden tardar unos segundos en aparecer completamente.
+- **Solución**: Implementamos `WebDriverWait` junto a condiciones explícitas (`EC.presence_of_element_located`) para asegurarnos de que el DOM esté completamente cargado antes de iniciar el parseo con BeautifulSoup.
+
+#### ⚠️ 3. Errores de navegación o datos ausentes
+- **Reto**: Algunos números MC no devuelven información completa o presentan errores de carga.
+- **Solución**: Se incorporaron bloques `try/except` y validación de contenido con `if not soup.find(...)`, permitiendo capturar errores sin detener el flujo del scraper.
+
+#### 🧩 4. Modularidad y funciones helper
+- **Reto**: Repetición de patrones en la extracción de valores similares.
+- **Solución**: Creamos funciones auxiliares (`get_value_by_label`, `get_address_block`, `extract_table_data`, etc.) para reducir código duplicado y mejorar la legibilidad. Esto permite una arquitectura flexible por bloques temáticos.
+
+#### 🔒 5. Cierre de sesión y liberación de recursos
+- **Reto**: El uso de WebDriver puede dejar procesos abiertos en segundo plano.
+- **Solución**: Añadimos un cierre limpio del navegador con `driver.quit()` y aseguramos el uso del navegador dentro de un bloque `try/finally` para prevenir fugas de memoria.
+
+---
+
+✨ Gracias a estos enfoques, logramos construir una **Etapa 1 sólida, modular y resiliente**, capaz de adaptarse a múltiples perfiles del sitio web de la FMCSA.
+
+---
 
 ## 📌 Resultados esperados
 
