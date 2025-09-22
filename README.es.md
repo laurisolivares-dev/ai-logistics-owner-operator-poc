@@ -272,6 +272,23 @@ Durante esta primera etapa de desarrollo, enfrentamos y superamos varios desafí
 
 ---
 
+### 📦 Resumen técnico de la Etapa 2
+
+A diferencia de la Etapa 1, esta fase no presentó grandes complicaciones técnicas. Aprovechando la estructura modular de extractores temáticos (`extract_usdot_information`, `extract_company_information`, `extract_classifications`, etc.), fue posible consolidar todos los bloques en un diccionario principal y exportarlos fácilmente a formato `.json`.
+
+#### ✅ Lo que se logró:
+
+- Recolección temática por bloques (USDOT Info, Company Info, Classification, Inspections, Crash, Rating).
+- Armado de un único diccionario estructurado (`carrier_data`) con claves temáticas.
+- Inclusión del número MC como identificador único en el nombre del archivo.
+- Exportación usando `json.dump()` con formato legible (`indent=4`) para facilitar futuras validaciones y análisis.
+- Guardado automático en la carpeta `/outputs/`, por ejemplo:
+
+```json```
+📁 outputs/MC_1498383.json
+
+---
+
 ✨ Gracias a estos enfoques, logramos construir una **Etapa 1 sólida, modular y resiliente**, capaz de adaptarse a múltiples perfiles del sitio web de la FMCSA.
 
 ---
