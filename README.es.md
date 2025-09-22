@@ -111,13 +111,107 @@ Extraer bloques bien definidos de datos regulatorios y operativos para transport
 
 Esta segmentación estructurada permitirá modularizar las próximas etapas del scraper, conectar con bases de datos (como BigQuery) y escalar el scraping a múltiples MC Numbers automáticamente.
 
-### 🔜 Etapa 2 (en desarrollo): Scraper Multi-MC con Automatización y Control de Errores
+### 🔄 Etapa 2: Serialización en JSON
 
-Próximamente se diseñará una segunda etapa para:
-  - Recorrer múltiples MC Numbers (desde archivo, rango o scraping previo).
-  - Implementar control de errores ante MC inválidos, páginas vacías o estructuras inconsistentes.
-  - Agregar funciones de logging, retry y tiempo de espera dinámico.
-  - Guardar los datos en un Data Lake (como GCP Cloud Storage o BigQuery.
+**Objetivo:**
+Transformar y almacenar toda la información extraída por bloques temáticos desde el portal SAFER de la FMCSA en un archivo estructurado en formato .json, identificable por su número MC.
+
+**Descripción:**
+En esta etapa, el scraper evoluciona de ser un simple visualizador a convertirse en una herramienta de recolección persistente de datos, al guardar cada consulta en un archivo *.json* con nombre único según el MC consultado (ej. *MC_1498383.json*).
+
+El diseño modular por bloques permite estructurar la información en categorías fácilmente reutilizables:
+
+  - USDOT Information.
+  - Operating Authority Status.
+  - Company Information.
+  - Operation Classification.
+  - Carrier Operation.
+  - Inspections Summary.
+  - Crash History.
+  - Carrier Safety Rating.
+
+
+**Ejemplo de archivo generado:**
+
+```json
+{
+  "USDOT Information": {
+    "Entity Type": "CARRIER",
+    "USDOT Status": "ACTIVE",
+    "USDOT Number": "3992838",
+    "MCS-150 Form Date": "01/19/2025",
+    "Out of Service Date": "None",
+    "State Carrier ID Number": "N/A",
+    "MCS-150 Mileage (Year)": "N/A"
+  },
+  "Operating Authority Status": "AUTHORIZED FOR Property For Licensing and Insurance details click here.",
+  "Company Information": {
+    "Legal Name": "MYDELIVERYS919 LLC",
+    "DBA Name": "",
+    "Physical Address": "8226 ROLLINGHITCH CT MAINEVILLE, OH   45039",
+    "Mailing Address": "8226 ROLLINGHITCH CT MAINEVILLE, OH   45039",
+    "Phone": "(513) 828-7166",
+    "DUNS Number": "--",
+    "Power Units": "0",
+    "Non-CMV Units": "1",
+    "Drivers": "1"
+  },
+  "Operation Classification": [
+    "Auth. For Hire",
+    "Interstate",
+    "General Freight",
+    "Metal: sheets, coils, rolls",
+    "Building Materials",
+    "Utilities"
+  ],
+  "Carrier Operation": "Interstate",
+  "Inspections Summary": {
+    "Inspections": {
+      "Vehicle": "0",
+      "Driver": "0",
+      "Hazmat": "0",
+      "IEP": "0"
+    },
+    "Out of Service": {
+      "Vehicle": "0",
+      "Driver": "0",
+      "Hazmat": "0",
+      "IEP": "0"
+    },
+    "Out of Service %": {
+      "Vehicle": "0%",
+      "Driver": "0%",
+      "Hazmat": "0%",
+      "IEP": "0%"
+    },
+    "Natl Avg %": {
+      "Vehicle": "22.26%",
+      "Driver": "6.67%",
+      "Hazmat": "4.44%",
+      "IEP": "N/A"
+    }
+  },
+  "Crash History": {
+    "Fatal": "0",
+    "Injury": "0",
+    "Tow": "0",
+    "Total": "0"
+  },
+  "Carrier Safety Rating": {
+    "Rating Date": "None",
+    "Review Date": "None",
+    "Rating": "None",
+    "Type": "None"
+  }
+}
+
+
+**Ubicación de los archivos JSON generados:**
+Todos los archivos se almacenan en la carpeta outputs/ del entorno local, por ejemplo:
+C:\Users\loliv\outputs\MC_1498383.json
+
+**Beneficio:**
+Esta estructura permite consultas posteriores, integración con pipelines ETL, análisis comparativo entre MCs, o visualización en dashboards como Looker Studio o herramientas de BI.
 
 ---
 
