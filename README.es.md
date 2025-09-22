@@ -247,11 +247,6 @@ A continuación se describen las acciones pendientes para completar el flujo ETL
 
 ---
 
-**🎯 Resultado esperado:**  
-Un pipeline ETL funcional, modular y reproducible, capaz de procesar múltiples MCs y guardar sus datos estructurados en BigQuery para futuras visualizaciones, análisis y alertas automatizadas.
-
----
-
 ## 📌 Resultados esperados
 
 - Cuadro comparativo de rentabilidad neta según tipo de unidad y modalidad de pago
