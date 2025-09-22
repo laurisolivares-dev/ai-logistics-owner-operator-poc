@@ -117,7 +117,7 @@ Esta segmentación estructurada permitirá modularizar las próximas etapas del 
 Transformar y almacenar toda la información extraída por bloques temáticos desde el portal SAFER de la FMCSA en un archivo estructurado en formato .json, identificable por su número MC.
 
 **Descripción:**
-En esta etapa, el scraper evoluciona de ser un simple visualizador a convertirse en una herramienta de recolección persistente de datos, al guardar cada consulta en un archivo *.json* con nombre único según el MC consultado (ej. *MC_1498383.json*).
+En esta etapa, el scraper evoluciona de ser un simple visualizador a convertirse en una herramienta de recolección persistente de datos, al guardar cada consulta en un archivo `.json/` con nombre único según el MC consultado (ej. `MC_1498383.json/`).
 
 El diseño modular por bloques permite estructurar la información en categorías fácilmente reutilizables:
 
