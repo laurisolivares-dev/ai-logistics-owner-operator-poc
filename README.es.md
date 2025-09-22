@@ -215,31 +215,40 @@ Esta estructura permite consultas posteriores, integración con pipelines ETL, a
 
 ---
 
-## 📌 Futuros pasos
+## 🔄 Futuros pasos del proceso ETL
 
-A continuación se detallan las próximas etapas para continuar con el desarrollo del scraper y el pipeline ETL del proyecto:
+A continuación se describen las acciones pendientes para completar el flujo ETL (Extracción, Transformación y Carga) del scraper de MCs:
 
-1. **Etapa 3: Integración de Historial de Bienales y Seguros**
-   - Extraer la sección de "Biennial Update" y detalles de "Insurance" desde la página de SAFER.
-   - Normalizar datos como fechas, status y número de pólizas.
-   - Agregar al JSON final bajo un nuevo bloque `"Biennial & Insurance"`.
+### 🧪 Extracción (E)
+- [x] Extraer y estructurar los bloques principales desde FMCSA SAFER:
+  - Información USDOT
+  - Autoridad Operativa
+  - Datos de la Compañía
+  - Clasificación de Operaciones
+  - Historial de Inspecciones
+  - Historial de Colisiones
+  - Calificación de Seguridad del Transportista
+- [ ] Añadir bloques adicionales:
+  - Actualización Bienal (Biennial Update)
+  - Información de Seguro (Insurance)
+  - Licencias suspendidas / desactivadas
 
-2. **Etapa 4: Validación de Factoring y Brokers**
-   - Cruce de datos con listados de brokers y factoring (por ejemplo, Excel o APIs de verificación).
-   - Clasificación del MC como "activo", "riesgoso", "nuevo" o "sospechoso".
+### 🔧 Transformación (T)
+- [ ] Normalizar campos comunes (fechas, N/A, valores vacíos)
+- [ ] Agregar validación de estructura antes de guardar cada JSON
+- [ ] Consolidar etiquetas para facilitar análisis en BigQuery
+- [ ] Establecer estructura uniforme por bloque de datos
 
-3. **Etapa 5: Pipeline ETL con GCP (Google Cloud Platform)**
-   - Carga de archivos `.json` a **Cloud Storage**.
-   - Automatización de ingestión en **BigQuery**.
-   - Agregado de campo `timestamp` por MC para histórico de cambios.
+### 🚀 Carga (L)
+- [ ] Crear bucket en Google Cloud Storage (GCS)
+- [ ] Automatizar carga de archivos JSON desde carpeta local a GCS
+- [ ] Crear tabla en BigQuery con esquema adaptable a los JSON
+- [ ] Cargar los datos en BigQuery desde GCS
 
-4. **Etapa 6: Visualización dinámica**
-   - Creación de dashboards en **Looker Studio** (antes Data Studio) o **Power BI**.
-   - Comparativas por estado, tipo de operación, historial de inspecciones, etc.
+---
 
-5. **Etapa 7: Automatización mensual**
-   - Programar ejecución automática del scraper por lista de MCs cada 30 días.
-   - Envío de alertas por correo o Telegram si un MC cambia de estado (por ejemplo, pasa a "Out of Service").
+**🎯 Resultado esperado:**  
+Un pipeline ETL funcional, modular y reproducible, capaz de procesar múltiples MCs y guardar sus datos estructurados en BigQuery para futuras visualizaciones, análisis y alertas automatizadas.
 
 ---
 
