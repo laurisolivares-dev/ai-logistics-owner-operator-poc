@@ -213,6 +213,33 @@ Todos los archivos se almacenan en la carpeta `outputs/` del entorno local, por 
 **💡 Beneficio:**  
 Esta estructura permite consultas posteriores, integración con pipelines ETL, análisis comparativo entre MCs, o visualización en dashboards externos.
 
+---
+
+## 📌 Futuros pasos
+
+A continuación se detallan las próximas etapas para continuar con el desarrollo del scraper y el pipeline ETL del proyecto:
+
+1. **Etapa 3: Integración de Historial de Bienales y Seguros**
+   - Extraer la sección de "Biennial Update" y detalles de "Insurance" desde la página de SAFER.
+   - Normalizar datos como fechas, status y número de pólizas.
+   - Agregar al JSON final bajo un nuevo bloque `"Biennial & Insurance"`.
+
+2. **Etapa 4: Validación de Factoring y Brokers**
+   - Cruce de datos con listados de brokers y factoring (por ejemplo, Excel o APIs de verificación).
+   - Clasificación del MC como "activo", "riesgoso", "nuevo" o "sospechoso".
+
+3. **Etapa 5: Pipeline ETL con GCP (Google Cloud Platform)**
+   - Carga de archivos `.json` a **Cloud Storage**.
+   - Automatización de ingestión en **BigQuery**.
+   - Agregado de campo `timestamp` por MC para histórico de cambios.
+
+4. **Etapa 6: Visualización dinámica**
+   - Creación de dashboards en **Looker Studio** (antes Data Studio) o **Power BI**.
+   - Comparativas por estado, tipo de operación, historial de inspecciones, etc.
+
+5. **Etapa 7: Automatización mensual**
+   - Programar ejecución automática del scraper por lista de MCs cada 30 días.
+   - Envío de alertas por correo o Telegram si un MC cambia de estado (por ejemplo, pasa a "Out of Service").
 
 ---
 
