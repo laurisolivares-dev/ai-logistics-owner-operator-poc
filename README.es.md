@@ -328,7 +328,7 @@ Este POC busca ser una herramienta útil, realista y escalable para mejorar la t
 
 **Lauris Olivares** – Data Engineer | SAP Basis Consultant | Owner Operator  
 GitHub: [laurisolivares-dev](https://github.com/laurisolivares-dev)  
-LinkedIn: [lauris-olivares-06415553](https://linkedin.com/in/lauris-olivares-06415553)
+LinkedIn: [lauris-olivares-06415553](https://linkedin.com/in/lauris-olivares)
 
 ---
 
